@@ -4,19 +4,15 @@ console.log("Введённый пользователем символ: ", user
 if (userSymbol === null) {
   alert("Отменено ползователем");
 } else {
-  // console.log(typeof userSymbol, userSymbol),
-  // alert(
   userSymbol =
-    userSymbol === " " //если пробел
-      ? (userSymbol = !!userSymbol) //в переменную userSymbol запишется пробел в булевом - "true"
-      : userSymbol === "" || userSymbol.length > 1 //иначе проверяем на пустой ввод или больше 2 символов
-      ? (userSymbol = " ") //если правда в переменную запишется пробел
-      : (userSymbol = userSymbol.toLowerCase()); //если ложь то введенный один символ преобразуем в нижний регистр
+    userSymbol === "" || userSymbol.length > 1 //проверяем на пустой ввод или больше 2 символов
+      ? " " //если правда в переменную запишется пробел
+      : userSymbol.toLowerCase(); //если ложь то введенный один символ преобразуем в нижний регистр
 
   console.log("userSymbol: ", userSymbol, "Typeof: ", typeof userSymbol);
 
-  //////////////////////////////////
   let randomNumAmountTrunc = "";
+
   switch (userSymbol) {
     case "a":
     case "e":
@@ -52,16 +48,23 @@ if (userSymbol === null) {
           alert(
             `Сгенерирован 0, значит записываем дефолтный 1: randomNumAmountTrunc = ${randomNumAmountTrunc}`
           );
-          break;
       }
+      break;
+    case " ":
+      //Если символ равен " " - вывести этот символ, преобразованный в булевый тип
+      userSymbol = !!userSymbol;
+      alert(
+        `Вы ввели пробел, а мы преобразовали его в ${typeof userSymbol} ${userSymbol}`
+      );
+      break;
     default:
-    //   //Во всех остальных случаях - сгенерировать 3 случайных числа и найти максимальное из них и вывести это число.
-    //   alert(
-    //     `Самое большое из трех случайных \nчисел от 0 до 1 = ${Math.max(
-    //       Math.random(),
-    //       Math.random(),
-    //       Math.random()
-    //     )}`
-    //   );
+      //Во всех остальных случаях - сгенерировать 3 случайных числа и найти максимальное из них и вывести это число.
+      alert(
+        `Самое большое из трех случайных \nчисел от 0 до 1 = ${Math.max(
+          Math.random(),
+          Math.random(),
+          Math.random()
+        )}`
+      );
   }
 }
